@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>login</title>
+      <style>
+          .reg{
+              display: inline-block;
+              margin-right: 200px;
+          }
+
+          .login{
+              display: inline-block;
+              vertical-align: top;
+              
+          }
+          body{
+
+            background: linear-gradient(#8ed2fe, #997859, #40ced0, #364a2e);
+            width: 960px;
+            height: 1200px;
+          }
+      </style>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+        <h2>Register</h2>
+        <div class="reg">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+          <form action="/processreg" method="POST">
+            {% csrf_token %}
+            <p><label for="name">Name:</label></p>
+            <p><input type="text" name="name" value=""></p>
+            <p><label for='alias'> Alias </label></p>
+            <p><input type='text' name='alias'></p>
+            <p><label for="username">email:</label></p>
+            <p><input type="text" name="username" value=""></p>
+            <p><label for="password">Password</label></p>
+            <p><input type="password" name="password" value=""></p>
+            <p>*Password should be atleast 8 characters</p>
+            <p><label for="confirm_pw">Confirm pw:</label></p>
+            <p><input type="password" name="confirm_pw" value=""></p>
+            <p><label for='birthday'>Date of Birth </label></p>
+            <p><input type='date' name='date'></p>
+            <p><input type="submit" name="" value="Register" ></p>
+            
+          </form>
+        </div>
+        <div class="login">
+          <h1>Login</h1>
+          <form action="/processlog" method="POST">
+              {% csrf_token %}
+              <p><label for="username">Email:</label></p>
+              <p><input type="text" name="username"></p>
+              <p><label for="password">Password:</label></p>
+              <p><input type="password" name="password"></p>
+              <p><input type="submit" name="" value="login"></p>
+
+          </form>
+      </div>
+    </body>
+</html>

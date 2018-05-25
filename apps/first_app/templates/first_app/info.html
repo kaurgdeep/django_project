@@ -1,0 +1,26 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>quotes</title>
+      <style>
+         body{
+            background: linear-gradient(#8ed2fe, #997859, #40ced0, #364a2e);
+          }
+      </style>
+    </head>
+    <body>
+      <a href="/home">Dashboard</a>
+      <a href="/logout">logout</a>
+      <!-- {% for user in current_users %}
+      <p>Posts by {{user.alias}}</p>
+
+      {% endfor %}
+         -->
+        <h4>Posts by {{user.name}}</h4>
+        <h4>Count: {{my_quotes.count}}</h4>
+    
+        {%for x in user.added_quotes.all%}
+        <p>{{ x.quoted_by }}: {{ x.message }}</p>
+        {%endfor%} 
+    </body>
+</html>    
